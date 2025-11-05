@@ -1,0 +1,22 @@
+.welcome-image {
+    width: 100%;
+    min-height: 100vh;
+    object-fit: cover;
+    display: block;
+}
+
+.title-container {
+    width: 390px;
+    position: absolute;
+    bottom: 0;
+    background: white;
+    color: black;
+    padding: 10px 0px;
+    margin: 10px -5px 10px 16px;
+    border-radius: 30px;
+}
+
+.welcome-button {
+    width: 90%;
+    background: #7579B6 !important;
+}
