@@ -1,47 +1,33 @@
 <div class="welcome-page">
   <img class="welcome-image" src="../../assets/images/resized_image_434x965.png" alt="Welcome Image" />
-  <div class="title-container">
-    <h1>Welcome to WaySafe</h1>
-    <p>Never forget a password anymore.</p>
-    <button class="welcome-button" matButton="filled" routerLink="/signup">Get Started</button>
+  <div class="title-container" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+    <mat-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <h3>Welcome to WaySafe</h3>
+          <p>Let's get you started.</p>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Your Name" formControlName="firstCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-flat-button color="primary" matStepperNext class="action-button">Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <h3>Secure your vault</h3>
+          <p>Create a 4-6 digit PIN.</p>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>PIN</mat-label>
+            <input matInput type="password" formControlName="secondCtrl" required maxlength="6">
+          </mat-form-field>
+          <div class="button-row">
+            <button mat-flat-button color="primary" class="action-button">Create Pin</button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-stepper>
   </div>
 </div>
-
-<!-- <button matButton="elevated" (click)="isLinear = !isLinear" id="toggle-linear">
-  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-</button>
-<mat-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGrsoup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>
-      <div>
-        <button matButton matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
-    <form [formGroup]="secondFormGroup">
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
-      <div>
-        <button matButton matStepperPrevious>Back</button>
-        <button matButton matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button matButton matStepperPrevious>Back</button>
-      <button matButton (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-stepper> -->
